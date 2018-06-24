@@ -1,5 +1,5 @@
 FROM phusion/baseimage:latest
-MAINTAINER Guillaume WELLS <contact.at.wellsguuillaume.fr>
+MAINTAINER Guillaume WELLS <contact.at.wellsguillaume.fr>
 
 # Locale configuration for ppa:ondrej/php repositiory who use special char
 
@@ -44,7 +44,7 @@ RUN     git clone https://chromium.googlesource.com/chromium/tools/depot_tools.g
 ENV     PATH="$PATH:/tmp/depot_tools"
 
 # Compilation of v8 engine. An evironement variable need to be set.
-# export VERSION=6.9.207
+# export VERSION="6.9.207"
 # List of available version: https://chromium.googlesource.com/v8/v8.git
 
 RUN     cd /usr/local/src && fetch v8 && cd v8 && \
@@ -63,7 +63,7 @@ RUN     cd /usr/local/src/v8js && ./configure LDFLAGS="-lstdc++" --with-v8js=/us
         export NO_INTERACTION=1 
 
 RUN     cd /usr/local/src/v8js && make all -j8
-RUN     cd /usr/local/src/v8js && make install
+RUN     cd /usr/local/src/v8js && make install #TODO: put again make test install
 
 RUN     echo extension=v8js.so > /etc/php/7.1/cli/conf.d/99-v8js.ini && \
             \
