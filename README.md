@@ -12,7 +12,3 @@ Dockerfile for install a **php-v8-js** apache server
 * `docker run --name php-v8 -tv /srv/monsite:/var/www -p 80:80  -d php-v8`
 
 * `docker start php-v8`
-
-### Todo
-
-- [ ] Unblock the TEST step
